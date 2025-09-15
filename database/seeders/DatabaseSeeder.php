@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Blog;
 use App\Models\Comment;
 use App\Models\Answer;
 use App\Models\Question;
@@ -55,5 +56,10 @@ class DatabaseSeeder extends Seeder
         //     'commentable_id'   => fn() => rand(0,1) ? $questions->random()->id : $answers->random()->id,
         //     'commentable_type' => fn() => rand(0,1) ? Question::class : Answer::class,
         // ]);
+
+        Blog::factory(30)->create([
+            'user_id'       => fn() => User::inRandomOrder()->first()->id, //fn() => es una consulta cada vez que se crea una pregunta para asignar un usuario aleatorio cada vez que se crea una pregunta
+            'category_id'   => fn() => $categories->random()->id,
+        ]);
     }
 }

@@ -11,7 +11,7 @@
                 </div>
                 <div class="flex-auto">
                     <p class="text-sm font-semibold text-gray-900">
-                        <a href="#" class="hover:underline">
+                        <a href="{{ route('questions.show', $question) }}" class="hover:underline">
                             {{$question->title}}
                         </a>
                     </p>

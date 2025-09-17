@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Question;
+use App\Models\User;    
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,4 +11,14 @@ class Answer extends Model
 {
     /** @use HasFactory<\Database\Factories\AnswerFactory> */
     use HasFactory;
+
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

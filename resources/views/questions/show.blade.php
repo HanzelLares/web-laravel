@@ -1,8 +1,14 @@
-{{ $question->title }}
+<x-forum.layouts.app>
 
-<p>
-    {{ $question->description }}
-</p>
+<div class="border p-4 mb-4">
+    <h3>
+        {{ $question->title }}
+    </h3>
+
+    <p>
+        {{ $question->description }}
+    </p>
+</div>
 
 <p>
     @foreach ($question->answers as $answer)
@@ -12,3 +18,5 @@
         </div>
     @endforeach
 </p>
+
+</x-forum.layouts.app>

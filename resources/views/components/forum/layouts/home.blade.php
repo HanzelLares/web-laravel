@@ -13,7 +13,7 @@
             <nav class="flex items-center justify-between h-16">
                 <div>
                     <a href="#">
-                        Logo
+                        <x-forum.logo/>
                     </a>
                 </div>
                 

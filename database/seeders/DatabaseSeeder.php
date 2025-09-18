@@ -37,6 +37,11 @@ class DatabaseSeeder extends Seeder
             'question_id'   => fn() => $questions->random()->id,
         ]);
 
+        $blogs  = Blog::factory(30)->create([
+            'user_id'       => fn() => User::inRandomOrder()->first()->id, //fn() => es una consulta cada vez que se crea una pregunta para asignar un usuario aleatorio cada vez que se crea una pregunta
+            'category_id'   => fn() => $categories->random()->id,
+        ]);
+
         Comment::factory(100)->create([
             'user_id'       => fn() => User::inRandomOrder()->first()->id,
             'commentable_id'   => fn() => $answers->random()->id,
@@ -49,6 +54,12 @@ class DatabaseSeeder extends Seeder
             'commentable_type' => fn() => Question::class,
         ]);
 
+        Comment::factory(100)->create([
+            'user_id'       => fn() => User::inRandomOrder()->first()->id,
+            'commentable_id'   => fn() => $blogs->random()->id,
+            'commentable_type' => fn() => Blog::class,
+        ]);
+
 
 
         // Comment::factory(100)->create([
@@ -57,9 +68,6 @@ class DatabaseSeeder extends Seeder
         //     'commentable_type' => fn() => rand(0,1) ? Question::class : Answer::class,
         // ]);
 
-        Blog::factory(30)->create([
-            'user_id'       => fn() => User::inRandomOrder()->first()->id, //fn() => es una consulta cada vez que se crea una pregunta para asignar un usuario aleatorio cada vez que se crea una pregunta
-            'category_id'   => fn() => $categories->random()->id,
-        ]);
+        
     }
 }

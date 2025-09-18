@@ -12,6 +12,11 @@ class Answer extends Model
     /** @use HasFactory<\Database\Factories\AnswerFactory> */
     use HasFactory;
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable'); // Polymorphic relationship, commentable because it can be used by multiple models (like Question and Answer)
+    }
+    
     public function question()
     {
         return $this->belongsTo(Question::class);
